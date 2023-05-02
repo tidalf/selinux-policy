@@ -5,10 +5,28 @@
 .PHONY: all clean policypackets noluci mintesttgt policy check install
 
 # default target, all modules: unboundhotplug and rcunbound are mutually exclusive
-modules = $(shell find src -type f -name '*.cil' \
+modulesold = $(shell find src -type f -name '*.cil' \
 	-regextype posix-egrep \
 	! -regex 'src/net/netpacket/.*\.cil' \
 	! -name unboundhotplug.cil -print0 | LC_ALL=C sort -z | xargs -r0)
+
+modules = $(shell find src -type f -name '*.cil' \
+	-regextype posix-egrep \
+	! -regex 'src/(cgi|init)?script/.*\.cil' \
+	! -name clocknodedev.cil \
+	! -name cpunodedev.cil ! -name dmctlnodedev.cil \
+	! -name dmstordev.cil \
+	! -name drinodedev.cil ! -name framebufnodedev.cil \
+	! -name fusenoseclabelfs.cil ! -name fusestordev.cil \
+	! -name fusefssysfile.cil ! -name hdstordev.cil \
+	! -name iso9660noseclabelfs.cil ! -name luaexecfile.cil \
+	! -name luci.cil  \
+	! -name nvmestordev.cil ! -name nvramnodedev.cil \
+	! -name px5gexecfile.cil \
+	! -name rpcd.cil ! -name rrd.cil \
+	! -name srstordev.cil ! -name squid.cil \
+	! -name uhttpd.cil ! -name vdstordev.cil ! -name vmcinodedev.cil \
+	-print0 | LC_ALL=C sort -z | xargs -r0)
 
 # same as default target but then with packets
 modulespackets = $(shell find src -type f -name '*.cil' \
