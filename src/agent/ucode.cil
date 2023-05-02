@@ -52,7 +52,7 @@
        (blockinherit .file.data.obj_template)
 
        (allow subj self create_unix_stream_socket)
-
+       (allow ucode.subj nftables.conffile (dir (search)))
        (call list_datafile_dirs (subj))
        (call read_datafile_files (subj))
 
