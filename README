@@ -1,4 +1,4 @@
-SELinux security policy for OpenWrt
+SELinux security policy for OpenWrt (forked from 1.2.6)
 
 Homepage:
     https://git.defensec.nl/?p=selinux-policy.git;a=summary
