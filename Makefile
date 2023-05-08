@@ -12,6 +12,23 @@ modulesold = $(shell find src -type f -name '*.cil' \
 
 modules = $(shell find src -type f -name '*.cil' \
 	-regextype posix-egrep \
+	! -regex 'src/(init)?script/.*\.cil' \
+	! -name clocknodedev.cil \
+	! -name cpunodedev.cil ! -name dmctlnodedev.cil \
+	! -name dmstordev.cil \
+	! -name drinodedev.cil ! -name framebufnodedev.cil \
+	! -name fusenoseclabelfs.cil ! -name fusestordev.cil \
+	! -name fusefssysfile.cil ! -name hdstordev.cil \
+	! -name iso9660noseclabelfs.cil \
+	! -name nvmestordev.cil ! -name nvramnodedev.cil \
+	! -name px5gexecfile.cil \
+	! -name rrd.cil \
+	! -name srstordev.cil ! -name squid.cil \
+	! -name vdstordev.cil ! -name vmcinodedev.cil \
+	-print0 | LC_ALL=C sort -z | xargs -r0)
+
+modulesokwithoutluci = $(shell find src -type f -name '*.cil' \
+	-regextype posix-egrep \
 	! -regex 'src/(cgi|init)?script/.*\.cil' \
 	! -name clocknodedev.cil \
 	! -name cpunodedev.cil ! -name dmctlnodedev.cil \
