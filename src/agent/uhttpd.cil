@@ -102,6 +102,7 @@
        (call .http.tcp_bind_netports (subj))
 
        (call .lua.execute_execfile_files (subj))
+       (call .prometheuslua.execute_execfile_files (subj))
 
        (call .net.egress_netifs (subj))
        (call .net.port.unreserved.tcp_bind_all_netports (subj))
@@ -112,6 +113,7 @@
 
        (call .shell.mapexecute_execfile_files (subj))
        (call .shell.read_execfile_files (subj))
+       (call .shell.execute_execfile_files (subj))
 
        (call .tmpfile.search_conftmpfile_dirs (subj))
        (call .tmpfile.search_runtimetmpfile_dirs (subj))

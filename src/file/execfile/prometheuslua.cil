@@ -3,16 +3,16 @@
 ;; SPDX-License-Identifier: Unlicense
 
 (in .file
-    (call .lua.obj_type_transition_execfile (unconfined.subj_typeattr)))
+    (call .prometheuslua.obj_type_transition_execfile (unconfined.subj_typeattr)))
 
-(block lua
+(block prometheuslua
 
        ;;
        ;; Contexts
        ;;
 
        (filecon
-        "/usr/bin/lua5\.1"
+        "/usr/bin/prometheus-node-exporter-lua"
         file
         execfile_file_context)
  
@@ -22,7 +22,7 @@
 
        (macro obj_type_transition_execfile ((type ARG1))
               (call .file.execfile_obj_type_transition
-                    (ARG1 execfile file "lua5.1")))
+                    (ARG1 execfile file "prometheus-node-exporter-lua")))
 
        ;;
        ;; Policy
